@@ -1,15 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta http-equiv="refresh" content="15">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GitHub Events</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #050505;
+      color: #24292e;
+    }
+
+    header {
+      background-color: #24292e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff;
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+      border-left: 5px solid #2da44e;
+    }
+
+    li code {
+      background-color: #f1f1f1;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    li em {
+      color: #57606a;
+      font-style: normal;
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 600px) {
+      li {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h2>Recent GitHub Events</h2>
-  <ul>
-    {% for event in events %}
-      <li>{{ event.author }} {{ event.action }} from {{ event.from_branch }} to {{ event.to_branch }} on {{ event.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</li>
-    {% endfor %}
-  </ul>
+  <header>
+    <h2>Recent GitHub Events</h2>
+  </header>
+  <main>
+    <ul>
+      {% for event in events %}
+        <li>
+          <strong>{{ event.author }}</strong> {{ event.action }} from 
+          <code>{{ event.from_branch }}</code> to 
+          <code>{{ event.to_branch }}</code> on 
+          <em>{{ event.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</em>
+        </li>
+      {% endfor %}
+    </ul>
+  </main>
 </body>
 </html>
