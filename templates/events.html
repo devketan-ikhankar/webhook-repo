@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="refresh" content="15">
+  <title>GitHub Events</title>
+</head>
+<body>
+  <h2>Recent GitHub Events</h2>
+  <ul>
+    {% for event in events %}
+      <li>{{ event.author }} {{ event.action }} from {{ event.from_branch }} to {{ event.to_branch }} on {{ event.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
